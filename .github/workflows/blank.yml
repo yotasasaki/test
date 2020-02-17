@@ -1,5 +1,5 @@
 on: pull_request
-name: Remove label dismissed pull requests
+name: pr. Remove label dismissed pull requests
 jobs:
   removeLabelWhenDismissed:
     name: Remove label dismissed pull requests
