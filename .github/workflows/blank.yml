@@ -1,4 +1,4 @@
-on: push
+on: pull_request
 name: Remove label dismissed pull requests
 jobs:
   removeLabelWhenDismissed:
@@ -6,8 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Remove label dismissed pull requests
-      run: |
-        echo "This is test log"
+      run: echo $GITHUB_EVENT_PATH
       env:
         APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
