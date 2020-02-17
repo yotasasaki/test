@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Label when approved
-      uses: fan-y-sasaki/label-when-approved-action@patch-1
+      uses: fan-y-sasaki/label-when-approved-action@master
       env:
         APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
