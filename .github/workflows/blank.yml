@@ -6,9 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Remove label dismissed pull requests
-      run: cat $GITHUB_EVENT_PATH
+      run: |
+        number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+        base=$(jq --raw-output .base.ref "$GITHUB_EVENT_PATH")
+        echo $number
+        echo $base
+        if [[ "$base" == "master" ]]; then
+          curl -sSL \
+                -H "${AUTH_HEADER}" \
+                -H "${API_HEADER}" \
+                -X DELETE \
+                "${URI}/repos/${GITHUB_REPOSITORY}/issues/${number}/labels/${REMOVE_LABEL}"
+        fi
       env:
-        APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ADD_LABEL: "approved"
         REMOVE_LABEL: "approved"
