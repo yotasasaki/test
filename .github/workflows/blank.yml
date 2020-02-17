@@ -8,7 +8,7 @@ jobs:
     - name: Remove label dismissed pull requests
       run: |
         number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-        base=$(jq --raw-output .base.ref "$GITHUB_EVENT_PATH")
+        base=$(jq --raw-output .pull_request.base.ref "$GITHUB_EVENT_PATH")
         echo $number
         echo $base
         if [[ "$base" == "master" ]]; then
