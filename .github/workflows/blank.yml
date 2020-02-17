@@ -1,0 +1,14 @@
+on: push
+name: Remove label dismissed pull requests
+jobs:
+  removeLabelWhenDismissed:
+    name: Remove label dismissed pull requests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Remove label dismissed pull requests
+      uses: fan-y-sasaki/label-when-approved-action@master
+      env:
+        APPROVALS: "1"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ADD_LABEL: "approved"
+        REMOVE_LABEL: "awaiting"
