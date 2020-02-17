@@ -7,6 +7,9 @@ jobs:
     steps:
     - name: Remove label dismissed pull requests
       run: |
+        URI="https://api.github.com"
+        API_HEADER="Accept: application/vnd.github.v3+json"
+        AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
         number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
         base=$(jq --raw-output .pull_request.base.ref "$GITHUB_EVENT_PATH")
         echo $number
