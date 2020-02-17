@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Remove label dismissed pull requests
-      run: echo $GITHUB_EVENT_PATH
+      run: cat $GITHUB_EVENT_PATH
       env:
         APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
