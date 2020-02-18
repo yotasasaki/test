@@ -1,0 +1,15 @@
+name: Label when approved or remove label when dismissed
+
+on: pull_request_review
+jobs:
+  prLabeler:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Labeling
+      uses: ./.github/actions/pr-labeler
+      env:
+        APPROVALS: "2"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ADD_LABEL: "releasable"
