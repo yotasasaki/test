@@ -8,8 +8,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Labeling
-      uses: yotasasaki/test/.github/actions/pr-labeler@master
+      uses: fan-y-sasaki/label-when-approved-action@master
       env:
-        APPROVALS: "2"
+        APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ADD_LABEL: "releasable"
